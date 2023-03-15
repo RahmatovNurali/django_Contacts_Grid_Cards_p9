@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head itemscope="" itemtype="http://schema.org/WebSite">
+
+    <title itemprop="name">{% block title %} {% endblock %}</title>
+    {% include 'apps/index_parts/bootstrap.html' %}
+    {% include 'apps/index_parts/css.html' %}
+</head>
+<body>
+{% block body %}
+
+{% endblock %}
+{% include 'apps/index_parts/javascript.html' %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'apps/add_parts/base.html' %}
+{% block body %}
+    <div class="container" style="margin-top: 20px">
+        <form method="post" action="{% url 'add_page' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Name</label>
+                    <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">phone number</label>
+                    <input type="text" name="phone_number" class="form-control" id="inputPassword4"
+                           placeholder="phone number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputAddress" placeholder="your email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Region</label>
+                    <select name="address" id="inputState" class="form-control">
+                        {% for i in regions %}
+                            <option value="{{ i.id }}">{{ i.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Job</label>
+                    <select name="jobs" id="inputState" class="form-control">
+                        {% for i in jobs %}
+                            <option value="{{ i.id }}">{{ i.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6" style="margin-top: 32px">
+                    <input type="file" class="custom-file-input" name="image" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-outline-success">Save</button>
+            <a href="{% url "index_page" %}" class="btn btn-outline-primary" role="button" aria-disabled="true">cancel</a>
+        </form>
+    </div>
+{% endblock %}
